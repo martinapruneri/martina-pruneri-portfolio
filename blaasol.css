@@ -1,0 +1,1802 @@
+/* ==================================================
+   NAV ACTIVE STATE
+   ================================================== */
+
+.main-nav a.active {
+  color: var(--red);
+}
+
+.brand {
+  color: var(--pale-bg);
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+  overflow: auto;
+
+  background: rgba(0, 0, 0, 0.92);
+
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox__image {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+
+  cursor: zoom-in;
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.lightbox__image.is-zoomed {
+  cursor: zoom-out;
+}
+
+.lightbox__close {
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
+  z-index: 10000;
+
+  border: 0;
+  background: transparent;
+  color: #fff;
+
+  font-size: 3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ==================================================
+   TOP BAR
+   ================================================== */
+
+.case-topbar {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 95;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+
+  padding: 1.15rem clamp(1.5rem, 4vw, 3rem);
+  background: var(--pale-bg);
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.case-breadcrumb {
+  font-family: 'Malevice Inkbleed';
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.case-breadcrumb a {
+  color: var(--blue);
+}
+
+.case-breadcrumb > span:not(.case-breadcrumb__current) {
+  margin-inline: 0.45rem;
+  color: var(--blue);
+}
+
+.case-breadcrumb__current {
+  color: var(--red);
+}
+
+.case-sectionnav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.case-sectionnav__link {
+  color: var(--blue);
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.case-sectionnav__link:hover {
+  transform: translateY(-2px);
+}
+
+.case-sectionnav__link.is-active {
+  color: var(--red);
+}
+
+#context,
+#process,
+#product {
+  scroll-margin-top: calc(var(--header-h) + 90px);
+}
+
+/* ==================================================
+   HERO
+   ================================================== */
+
+.case-hero {
+  padding: 1rem clamp(1.5rem, 5vw, 4rem) 1.7rem;
+  background: var(--pale-bg);
+  text-align: center;
+}
+
+.case-hero__images {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.case-hero__phone {
+  width: min(18vw, 205px);
+  margin-bottom: 0.5rem;
+}
+
+.case-title {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  color: var(--red);
+  font-family: 'Vuosi Vuodelta';
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 900;
+  line-height: 0.95;
+}
+
+.case-tags {
+  margin-top: 1rem;
+  color: var(--red);
+  font-family: 'Malevice Inkbleed';
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  line-height: 1.2;
+}
+
+/* ==================================================
+   STATEMENT BANNER
+   ================================================== */
+
+.case-statement {
+  width: 100%;
+  padding: clamp(2.6rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem);
+  background-image: url("assets/hiddenwalls/orangerectangle.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+.case-statement p {
+  width: 100%;
+  margin: 0 auto;
+  color: #fff;
+  font-family: 'Malevice Inkbleed';
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ==================================================
+   SUMMARY
+   ================================================== */
+
+.case-summary {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 2fr);
+  gap: clamp(3rem, 7vw, 7rem);
+  width: min(100%, 1250px);
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+}
+
+.case-summary__side,
+.case-summary__main {
+  min-width: 0;
+}
+
+.case-summary__item {
+  margin-bottom: 1.8rem;
+}
+
+.case-summary__item h3 {
+  margin-bottom: 0.35rem;
+  color: var(--lime);
+  font-family: 'Malevice Inkbleed';
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.case-summary__item p {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.4;
+}
+
+.case-summary__cta {
+  margin-top: 1rem;
+  padding: 0.75rem 1.1rem;
+  font-family: 'Vuosi Vuodelta';
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+  line-height: 1;
+}
+
+.case-summary__block {
+  margin-bottom: 1.5rem;
+}
+
+.case-summary__block h4 {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--ink);
+  font-family: 'Vuosi Vuodelta';
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.case-summary__block p {
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.35;
+}
+
+/* ==================================================
+   SHARED CASE SECTION
+   ================================================== */
+
+.case-section {
+  background: var(--pale-bg);
+}
+
+.case-section--context {
+  padding-top: clamp(0.5rem, 1vw, 1rem);
+  
+  background: var(--pale-bg);
+}
+
+.case-section__inner {
+  width: min(100%, 1250px);
+  margin: 0 auto;
+
+  padding:
+    clamp(2.5rem, 5vw, 4rem)
+    clamp(1.5rem, 3vw, 2.2rem)
+    clamp(2.5rem, 5vw, 4rem);
+
+  border: 5px solid var(--red);
+  border-radius: 14px;
+}
+
+/* ==================================================
+   CONTEXT HEADER
+   ================================================== */
+
+.context-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: clamp(0.25rem, 1vw, 0.75rem);
+  margin-bottom: clamp(1.5rem, 3vw, 1.5rem);
+}
+
+.case-section__title {
+  display: block;
+  width: clamp(320px, 48vw, 620px);
+  height: auto;
+}
+
+/* ==================================================
+   CONTEXT LAYOUT
+   ================================================== */
+
+.context-layout {
+  display: grid;
+  grid-template-columns: minmax(190px, 230px) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+
+/* ==================================================
+   CONTEXT OVERVIEW
+   ================================================== */
+
+.context-overview {
+  align-self: start;
+  position: sticky;
+  top: calc(var(--header-h) + 90px);
+  width: 100%;
+}
+
+.context-overview h2 {
+  margin: 0 0 1rem;
+  color: var(--lime);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+
+/* ==================================================
+   CONTEXT OVERVIEW NAV
+   ================================================== */
+
+.context-overview__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: 0.15rem;
+}
+
+.context-overview__nav > a,
+.context-overview__group > a {
+  display: block;
+  width: 100%;
+  margin: 0;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: clamp(1rem, 1.45vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: left;
+  text-decoration: none;
+}
+
+.context-overview__group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+
+/* Sub-links */
+
+.context-overview__nav a {
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.context-overview__nav a:hover {
+  color: var(--red);
+  transform: translateX(4px);
+}
+
+
+/* ==================================================
+   FIGJAM BUTTON
+   ================================================== */
+
+.context-overview__figjam {
+  display: block;
+  width: 100%;
+  margin-top: 70px;
+  overflow: hidden;
+  border-radius: 7px;
+  transition: transform 0.2s ease;
+}
+
+.context-overview__figjam:hover {
+  transform: scale(1.02);
+}
+
+.context-overview__figjam img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 900px) {
+  .context-layout {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .context-overview {
+    width: min(100%, 355px);
+    max-width: 360px;
+    margin-inline: auto;
+    text-align: left;
+  }
+
+  .context-overview__nav {
+    align-items: flex-start;
+  }
+}
+
+.context-overview__group ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0.2rem 0 0.25rem 3.1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.context-overview__group li {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.context-overview__group li::marker {
+  content: "";
+}
+
+.context-overview__group li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.22;
+  text-align: left;
+  text-decoration: none;
+}
+
+.context-overview__group li a::before {
+  content: "•";
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 0.9em;
+  line-height: inherit;
+}
+
+/* ==================================================
+   CONTEXT RESPONSIVE
+   ================================================== */
+
+@media (max-width: 1000px) {
+  .context-layout {
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 35px;
+  }
+
+  .context-overview h2 {
+    font-size: 41px;
+  }
+
+  .context-overview__nav > a,
+  .context-overview__group > a {
+    font-size: 20px;
+  }
+
+  .context-overview__group li {
+    font-size: 19px;
+  }
+
+  .context-overview__group ul {
+    margin-left: 48px;
+  }
+}
+
+/* ==================================================
+   CONTEXT CONTENT
+   ================================================== */
+
+.context-content {
+  min-width: 0;
+  width: 100%;
+}
+
+
+/* Main content blocks */
+
+.context-block {
+  width: 100%;
+  margin: 0 0 clamp(2.2rem, 4vw, 3.4rem);
+  scroll-margin-top: calc(var(--header-h) + 8rem);
+}
+
+.context-block:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Main numbered headings */
+
+.context-block h3 {
+  margin: 0 0 0.85rem;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.7vw, 2.25rem);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+
+/* Research subsection headings */
+
+.context-block h4 {
+  position: relative;
+  margin: 0 0 0.8rem;
+  padding-left: 1.8rem;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 2.6vw, 2.2rem);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.context-block h4::before {
+  content: "•";
+  position: absolute;
+  top: -0.05em;
+  left: 0;
+  font-family: Arial, sans-serif;
+  font-size: 0.8em;
+  line-height: 1;
+}
+
+
+/* Paragraphs */
+
+.context-block p {
+  width: 100%;
+  margin: 0 0 0.9rem;
+  color: var(--ink);
+  font-size: clamp(0.95rem, 1.25vw, 1.08rem);
+  line-height: 1.38;
+}
+
+.context-block p:last-child {
+  margin-bottom: 0;
+}
+
+.context-block strong {
+  font-weight: 800;
+}
+
+
+/* Research sections should sit close together */
+
+.context-block--research {
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+
+/* Images */
+
+.context-content__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin:
+    clamp(1rem, 2vw, 1.4rem)
+    0
+    clamp(1rem, 2vw, 1.4rem);
+  object-fit: contain;
+}
+
+
+/* Planning image slightly narrower */
+
+#planning .context-content__image {
+  width: 94%;
+  margin-inline: auto;
+}
+
+
+/* ==================================================
+   CONTEXT CONTENT MOBILE
+   ================================================== */
+
+@media (max-width: 900px) {
+  .context-block {
+    margin-bottom: 2.5rem;
+  }
+
+  .context-block h3 {
+    font-size: 1.7rem;
+  }
+
+  .context-block h4 {
+    font-size: 1.6rem;
+  }
+
+  #planning .context-content__image {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .context-block p {
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .context-block h4 {
+    padding-left: 1.4rem;
+  }
+}
+
+/* ==================================================
+   PROBLEM STATEMENT
+   ================================================== */
+
+.problem-statement {
+  position: relative;
+  width: 100%;
+  margin-top: clamp(3rem, 7vw, 5rem);
+
+  padding:
+    clamp(2.4rem, 5vw, 3rem)
+    clamp(2rem, 6vw, 5rem)
+    clamp(3rem, 5vw, 3.6rem);
+
+  border: 5px solid var(--ink);
+  border-radius: 18px 24px 14px 20px;
+  background: var(--pale-bg);
+
+  scroll-margin-top: calc(var(--header-h) + 90px);
+}
+
+/* OUTER TAIL */
+
+.problem-statement::before {
+  content: "";
+  position: absolute;
+  left: clamp(2rem, 6vw, 5rem);
+  bottom: -55px;
+
+  width: 0;
+  height: 0;
+
+  border-top: 55px solid var(--ink);
+  border-right: 45px solid transparent;
+}
+
+/* INNER TAIL */
+
+.problem-statement::after {
+  content: "";
+  position: absolute;
+  left: calc(clamp(2rem, 6vw, 5rem) + 6px);
+  bottom: -42px;
+
+  width: 0;
+  height: 0;
+
+  border-top: 43px solid var(--pale-bg);
+  border-right: 34px solid transparent;
+}
+
+.problem-statement__content {
+  width: min(100%, 960px);
+  margin: 0 auto;
+}
+
+.problem-statement h3 {
+  margin: 0 0 1rem;
+  text-align: right;
+
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.3vw, 2rem);
+  line-height: 1;
+}
+
+.problem-statement p {
+  margin: 0;
+
+  text-align: center;
+
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 2rem);
+  line-height: 1.15;
+}
+
+/* ==================================================
+   PROCESS SECTION
+   ================================================== */
+
+.case-section--process {
+  padding:
+    clamp(0.75rem, 2vw, 1.5rem)
+    clamp(2rem, 5vw, 4rem)
+    clamp(3rem, 6vw, 5rem);
+
+  background: var(--pale-bg);
+}
+
+.process-inner {
+  border-color: var(--red);
+}
+
+.process-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.process-layout {
+  display: grid;
+  grid-template-columns: minmax(190px, 230px) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* ---------- PROCESS OVERVIEW ---------- */
+
+.process-overview {
+  align-self: start;
+  position: sticky;
+  top: calc(var(--header-h) + 90px);
+}
+
+.process-overview h2 {
+  margin-bottom: 1rem;
+  color: var(--lime);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.process-overview__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.process-overview__nav > a,
+.process-overview__parent {
+  display: block;
+  font-size: clamp(1rem, 1.45vw, 1.3rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.process-overview__group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.process-overview__subnav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0.35rem;
+  margin-left: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+.process-overview__subnav a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.process-overview__subnav span {
+  flex: 0 0 auto;
+  font-size: 1.15em;
+  line-height: 1;
+}
+
+.process-overview__nav a {
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.process-overview__nav a:hover {
+  color: var(--red);
+  transform: translateX(4px);
+}
+
+/* ---------- process content ---------- */
+
+.process-content {
+  min-width: 0;
+}
+
+.process-block {
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+  scroll-margin-top: calc(var(--header-h) + 90px);
+}
+
+.process-block:last-child {
+  margin-bottom: 0;
+}
+
+.process-block h3 {
+  margin-bottom: 0.9rem;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.process-block > p {
+  margin-bottom: 1rem;
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  line-height: 1.5;
+}
+
+.process-block strong {
+  font-weight: 800;
+}
+
+/* ---------- shared process images ---------- */
+
+.process-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0;
+}
+
+.process-image--persona {
+  max-width: 850px;
+}
+
+.process-image--flow {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+/* ---------- question card ---------- */
+
+.process-question-card {
+  margin-top: 1.5rem;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  border: 4px solid var(--ink);
+  border-radius: 18px 14px 20px 12px;
+}
+
+.process-question-card h4 {
+  margin-bottom: 0.8rem;
+  color: var(--blue);
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  text-align: right;
+}
+
+.process-question-card ul {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.process-question-card li {
+  margin-bottom: 0.45rem;
+  line-height: 1.45;
+}
+
+/* ==================================================
+   HOW MIGHT WE BOX
+   ================================================== */
+
+.hmw-question-box {
+  position: relative;
+  width: 100%;
+  margin: 2rem 0 6rem;
+
+  padding:
+    clamp(4.8rem, 7vw, 6rem)
+    clamp(2rem, 5vw, 4rem)
+    clamp(2.2rem, 4vw, 3rem);
+
+  border: 5px solid var(--ink);
+  border-radius: 28px 34px 24px 18px;
+  background: var(--pale-bg);
+}
+
+/* Outer bubble tail */
+
+.hmw-question-box::before {
+  content: "";
+  position: absolute;
+  left: clamp(2rem, 5vw, 4rem);
+  bottom: -72px;
+
+  width: 0;
+  height: 0;
+
+  border-top: 72px solid var(--ink);
+  border-right: 58px solid transparent;
+}
+
+/* Inner bubble tail */
+
+.hmw-question-box::after {
+  content: "";
+  position: absolute;
+  left: calc(clamp(2rem, 5vw, 4rem) + 7px);
+  bottom: -57px;
+
+  width: 0;
+  height: 0;
+
+  border-top: 58px solid var(--pale-bg);
+  border-right: 45px solid transparent;
+}
+
+/* Blue heading */
+
+.hmw-question-box > h4 {
+  position: absolute;
+  top: clamp(1.2rem, 2vw, 1.8rem);
+  right: clamp(1.5rem, 4vw, 3rem);
+
+  margin: 0;
+  color: var(--blue);
+
+  font-family: "Vuosi Vuodelta", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Individual questions */
+
+.hmw-question {
+  margin-bottom: 1.15rem;
+}
+
+.hmw-question:last-child {
+  margin-bottom: 0;
+}
+
+.hmw-question h5 {
+  margin: 0 0 0.25rem;
+
+  color: var(--ink);
+  font-family: inherit;
+  font-size: clamp(1rem, 1.45vw, 1.25rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+/* Bullet point answers */
+
+.hmw-question ul {
+  margin: 0;
+  padding-left: 1.7rem;
+  list-style: disc;
+}
+
+.hmw-question li {
+  margin-bottom: 0.15rem;
+  padding-left: 0.15rem;
+
+  color: var(--ink);
+  font-size: clamp(0.95rem, 1.25vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.hmw-question li:last-child {
+  margin-bottom: 0;
+}
+
+/* ==================================================
+   HMW RESPONSIVE
+   ================================================== */
+
+@media (max-width: 600px) {
+  .hmw-question-box {
+    padding:
+      5rem
+      1.4rem
+      2.5rem;
+
+    border-width: 4px;
+    border-radius: 18px;
+  }
+
+  .hmw-question-box > h4 {
+    top: 1.3rem;
+    right: 1.3rem;
+    font-size: clamp(1.7rem, 8vw, 2.5rem);
+  }
+
+  .hmw-question h5 {
+    font-size: 1.05rem;
+  }
+
+  .hmw-question li {
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+
+  .hmw-question-box::before {
+    left: 2rem;
+    bottom: -46px;
+    border-top-width: 46px;
+    border-right-width: 36px;
+  }
+
+  .hmw-question-box::after {
+    left: calc(2rem + 6px);
+    bottom: -35px;
+    border-top-width: 36px;
+    border-right-width: 27px;
+  }
+}
+
+/* ---------- VALUE PROPOSITION CANVAS ---------- */
+
+.vpc-grid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: 2.5rem;
+}
+
+/* ---------- USER ROW ---------- */
+
+.vpc-header {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+/* ---------- SOLUTION ROW ---------- */
+
+.vpc-column--reverse .vpc-header {
+  grid-template-columns: minmax(0, 1fr) 280px;
+}
+
+/* ---------- CHARACTER IMAGES ---------- */
+
+.vpc-character {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  margin-inline: auto;
+}
+
+.vpc-character--solution {
+  width: 270px;
+  max-width: none;
+  margin-inline: auto;
+}
+
+/* ---------- CONTENT ---------- */
+
+.vpc-content {
+  min-width: 0;
+}
+
+.vpc-content h4 {
+  margin-bottom: 1.2rem;
+  color: var(--orange);
+  font-family: 'Vuosi Vuodelta';
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.vpc-item {
+  margin-bottom: 1.3rem;
+}
+
+.vpc-item:last-child {
+  margin-bottom: 0;
+}
+
+.vpc-item h5 {
+  margin-bottom: 0.3rem;
+  font-family: 'Malevice Inkbleed';
+  font-size: clamp(1.6rem, 2vw, 2.2rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.vpc-item p {
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.35;
+}
+
+/* ---------- TABLET ---------- */
+
+@media (max-width: 900px) {
+  .vpc-header,
+  .vpc-column--reverse .vpc-header {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .vpc-character {
+    max-width: 180px;
+    margin: 0 auto 1rem;
+  }
+
+  .vpc-character--solution {
+    width: 215px;
+    max-width: none;
+    margin: 0 auto 1rem;
+  }
+
+  .vpc-item {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 600px) {
+  .vpc-grid {
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  .vpc-header,
+  .vpc-column--reverse .vpc-header {
+    gap: 1.5rem;
+  }
+
+  .vpc-character {
+    max-width: 150px;
+  }
+
+  .vpc-character--solution {
+    width: 180px;
+  }
+
+  .vpc-content h4 {
+    font-size: 26px;
+  }
+
+  .vpc-item h5 {
+    font-size: 1.45rem;
+  }
+
+  .vpc-item p {
+    font-size: 1rem;
+  }
+}
+
+/* ---------- sketches ---------- */
+
+.process-section-title {
+    margin-bottom: 0.25rem;
+    font-family: 'Malevice Inkbleed';
+    font-size: clamp(2rem,3vw,2.8rem);
+    line-height: 1;
+}
+
+.process-subtitle {
+    display:flex;
+    align-items:center;
+    gap: 0.7rem;
+    margin: 0 0 1rem;
+    font-family: 'Malevice Inkbleed';
+    font-size: 32px;
+    line-height: 1;
+}
+
+.process-subtitle__bullet {
+    font-size: 1.15em;
+    line-height: 1;
+}
+
+/* ==================================================
+   SKETCHES GRID
+   ================================================== */
+
+.process-gallery--sketches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap:
+    clamp(2rem, 4vw, 3.5rem)
+    clamp(1.5rem, 3vw, 2.5rem);
+
+  width: 100%;
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0;
+}
+
+.sketch-card {
+  min-width: 0;
+  margin: 0;
+}
+
+.sketch-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.sketch-card figcaption {
+  margin-top: 0.55rem;
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Narrow 404 sketch on the lower left */
+
+.sketch-card--narrow {
+  width: 78%;
+  justify-self: center;
+}
+
+/* Two images stacked in the lower-right cell */
+
+.sketch-card__stack {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.sketch-card--stacked {
+  align-self: start;
+}
+
+/* ==================================================
+   SKETCHES TABLET
+   ================================================== */
+
+@media (max-width: 900px) {
+  .process-gallery--sketches {
+    gap: 2rem 1.25rem;
+  }
+
+  .sketch-card--narrow {
+    width: 82%;
+  }
+}
+
+/* ==================================================
+   SKETCHES MOBILE
+   ================================================== */
+
+@media (max-width: 600px) {
+  .process-gallery--sketches {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .sketch-card--narrow {
+    width: min(82%, 330px);
+  }
+
+  .sketch-card--stacked {
+    width: 100%;
+  }
+
+  .sketch-card figcaption {
+    font-size: 0.95rem;
+  }
+}
+
+/* ---------- VISUAL IDENTITY ---------- */
+
+#visual-identity > p {
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  line-height: 1.45;
+}
+
+.visual-identity-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin:
+    0
+    0
+    clamp(2rem, 5vw, 4rem);
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+.visual-identity-image:hover {
+  transform: scale(1.01);
+}
+
+.visual-identity-image:last-child {
+  margin-bottom: 0;
+}
+
+/* ==================================================
+   WIREFRAMES
+   ================================================== */
+
+.wireframes-showcase {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap:
+    clamp(3rem, 6vw, 5rem)
+    clamp(1.5rem, 3vw, 2.5rem);
+
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.wireframe-card {
+  min-width: 0;
+  margin: 0;
+}
+
+.wireframe-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+.wireframe-card img:hover {
+  transform: scale(1.01);
+}
+
+.wireframe-card figcaption {
+  margin-top: 0.7rem;
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Tall mobile wireframes */
+
+.wireframe-card--mobile {
+  width: 88%;
+  justify-self: center;
+}
+
+/* Wide desktop wireframes */
+
+.wireframe-card--desktop {
+  width: 100%;
+}
+
+
+/* Prototype button */
+
+.wireframes-prototype {
+  display: block;
+  width: fit-content;
+  margin: 2rem auto 0;
+  transition: transform 0.2s ease;
+}
+
+.wireframes-prototype:hover {
+  transform: scale(1.05);
+}
+
+.wireframes-prototype img {
+  display: block;
+  width: clamp(180px, 22vw, 300px);
+  height: auto;
+}
+
+/* Wireframes list */
+
+#wireframes ul {
+  margin: 1rem 0 1.8rem;
+  padding-left: 1.8rem;
+  list-style: disc;
+}
+
+#wireframes li {
+  margin-bottom: 0.6rem;
+  line-height: 1.45;
+}
+
+#wireframes li::marker {
+  color: var(--ink);
+}
+
+#wireframes ul + p {
+  margin-top: 2rem;
+}
+
+/* ==================================================
+   WIREFRAMES RESPONSIVE
+   ================================================== */
+
+@media (max-width: 700px) {
+  .wireframes-showcase {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .wireframe-card--mobile {
+    width: min(88%, 390px);
+  }
+}
+
+/* ==================================================
+   USABILITY TESTING
+   ================================================== */
+
+.testing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 3rem);
+  margin-top: 2rem;
+}
+
+.testing-card {
+  padding: clamp(1.6rem, 3vw, 2.3rem);
+  background: var(--red);
+  border-radius: 16px;
+  color: var(--pale-bg);
+}
+
+.testing-card h4 {
+  margin: 0 0 1rem;
+
+  color: var(--pale-bg);
+  font-family: "Vuosi Vuodelta";
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.testing-card ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+
+.testing-card li {
+  margin-bottom: 0.75rem;
+  color: var(--pale-bg);
+  font-size: clamp(1rem, 1.2vw, 1.08rem);
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.testing-card li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .testing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==================================================
+   PROCESS TABLET
+   ================================================== */
+
+@media (max-width: 900px) {
+  .process-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .process-overview {
+    position: static;
+    text-align: center;
+  }
+
+  .process-overview__nav {
+    align-items: center;
+  }
+}
+
+/* ==================================================
+   PROCESS MOBILE
+   ================================================== */
+
+@media (max-width: 600px) {
+  .case-section--process {
+    padding-inline: 1rem;
+  }
+
+  .process-header {
+    margin-bottom: 2rem;
+  }
+
+  .process-block {
+    margin-bottom: 4rem;
+  }
+
+  .process-gallery--sketches,
+  .wireframe-grid,
+  .testing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==================================================
+   HMW MOBILE
+   ================================================== */
+
+@media (max-width: 600px) {
+  .hmw-question-box {
+    padding:
+      5rem
+      1.4rem
+      2.5rem;
+
+    border-width: 4px;
+    border-radius: 18px;
+  }
+
+  .hmw-question-box h4 {
+    top: 1.3rem;
+    right: 1.3rem;
+    font-size: clamp(1.6rem, 8vw, 2.4rem);
+  }
+
+  .hmw-question-box li {
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .hmw-question-box::before {
+    left: 2rem;
+    bottom: -46px;
+    border-top-width: 46px;
+    border-right-width: 36px;
+  }
+
+  .hmw-question-box::after {
+    left: calc(2rem + 6px);
+    bottom: -35px;
+    border-top-width: 36px;
+    border-right-width: 27px;
+  }
+}
+
+/* ==================================================
+   PRODUCT SECTION
+   ================================================== */
+
+.case-section--product {
+  padding:
+    clamp(0.75rem, 2vw, 1.5rem)
+    clamp(2rem, 5vw, 4rem)
+    clamp(3rem, 6vw, 5rem);
+}
+
+.product-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+
+/* ==================================================
+   BLÅ SOL FINAL PHONE GRID
+   ================================================== */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: start;
+
+  column-gap: clamp(2rem, 6vw, 6rem);
+  row-gap: clamp(2rem, 4vw, 3.5rem);
+
+  width: 100%;
+}
+
+/* All five items are phone mockups */
+
+.product-card--phone {
+  grid-column: span 2;
+  width: 100%;
+  max-width: 235px;
+  margin: 0;
+  justify-self: center;
+}
+
+/* First row: three phones */
+
+.product-card--phone:nth-child(1) {
+  grid-column: 1 / span 2;
+}
+
+.product-card--phone:nth-child(2) {
+  grid-column: 3 / span 2;
+}
+
+.product-card--phone:nth-child(3) {
+  grid-column: 5 / span 2;
+}
+
+/* Second row: two centred phones */
+
+.product-card--phone:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.product-card--phone:nth-child(5) {
+  grid-column: 4 / span 2;
+}
+
+.product-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+.product-card img:hover {
+  transform: scale(1.01);
+}
+
+
+/* ---------- final prototype button ---------- */
+
+.product-button {
+  display: block;
+  width: fit-content;
+  margin: clamp(2.5rem, 5vw, 4rem) auto 0;
+  transition: transform 0.2s ease;
+}
+
+.product-button:hover {
+  transform: scale(1.05);
+}
+
+.product-button img {
+  display: block;
+  width: clamp(240px, 32vw, 460px);
+  height: auto;
+}
+
+/* ---------- reflection ---------- */
+
+.product-reflection {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  background: var(--red);
+  color: #fff;
+  border-radius: 16px;
+}
+
+.product-reflection h2 {
+  margin-bottom: 1.5rem;
+  font-family: 'Malevice Inkbleed';
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.product-reflection p {
+  margin-bottom: 1.3rem;
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.45;
+}
+
+.product-reflection p:last-child {
+  margin-bottom: 0;
+}
+
+.product-reflection strong {
+  font-weight: 800;
+}
+
+/* ==================================================
+   PRODUCT RESPONSIVE
+   ================================================== */
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem 2rem;
+  }
+
+  .product-card--phone,
+  .product-card--phone:nth-child(n) {
+    grid-column: auto;
+    width: min(100%, 230px);
+  }
+
+  .product-card--phone:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .product-card--phone,
+  .product-card--phone:nth-child(n),
+  .product-card--phone:last-child {
+    grid-column: 1;
+    width: min(72%, 300px);
+  }
+}
+
+/* ---------- Product ending layout ---------- */
+
+.case-section--product .case-section__inner {
+  --product-side-padding: clamp(1.5rem, 3vw, 2.2rem);
+
+  padding-right: var(--product-side-padding);
+  padding-bottom: 0;
+  padding-left: var(--product-side-padding);
+  overflow: hidden;
+}
+
+.product-reflection {
+  margin:
+    clamp(2rem, 4vw, 3rem)
+    calc(-1 * var(--product-side-padding))
+    0;
+
+  padding:
+    clamp(1.5rem, 3vw, 2.5rem)
+    clamp(1.25rem, 3vw, 2rem);
+
+  border-radius: 0 0 9px 9px;
+}
+
+.product-reflection h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 2.7vw, 2.3rem);
+}
+
+.product-reflection p {
+  margin-bottom: 1rem;
+  font-size: clamp(0.9rem, 1.15vw, 1.05rem);
+  line-height: 1.35;
+}
+
+.product-reflection p:last-child {
+  margin-bottom: 0;
+}

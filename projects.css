@@ -1,0 +1,83 @@
+/* ---------- nav active state ---------- */
+
+.main-nav a.active {
+  color: var(--red);
+}
+
+.brand {
+  color: var(--pale-bg);
+}
+
+/* ---------- heading variant ---------- */
+
+.heading--red {
+  color: var(--red);
+  font-family: 'Vuosi Vuodelta';
+}
+
+/* ---------- projects page ---------- */
+
+.projects-page {
+  background: var(--pale-bg);
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 4rem);
+}
+
+.projects-page > .heading {
+  text-align: center;
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.project-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  max-width: 1320px;
+  margin: 0 auto;
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.project-row:last-of-type {
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.project-row--reverse {
+  flex-direction: row-reverse;
+}
+
+.blaasol-info {
+  margin-left: 53px;
+}
+
+.project-row .carousel__info {
+  text-align: left;
+}
+
+.project-year {
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 780px) {
+  .project-row,
+  .project-row--reverse {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .project-row .carousel__info {
+    text-align: center;
+  }
+
+  .carousel__mockup {
+    flex: 0 1 auto;
+  }
+
+  .carousel__desc {
+    max-width: none;
+    margin-inline: auto;
+  }
+}
