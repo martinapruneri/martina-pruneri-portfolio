@@ -415,6 +415,22 @@
   font-weight: 800;
 }
 
+.context-block > ul {
+  margin-bottom: 0.9rem;
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+
+.context-block > ul li {
+  margin-bottom: 0.4rem;
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  line-height: 1.45;
+}
+
+.context-block > ul li:last-child {
+  margin-bottom: 0;
+}
+
 /* ==================================================
    TARGET GROUP IMAGE
    ================================================== */
@@ -785,6 +801,22 @@
 
 .process-block strong {
   font-weight: 800;
+}
+
+.process-block > ul {
+  margin-bottom: 0.9rem;
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+
+.process-block > ul li {
+  margin-bottom: 0.4rem;
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  line-height: 1.45;
+}
+
+.process-block > ul li:last-child {
+  margin-bottom: 0;
 }
 
 /* ---------- shared process images ---------- */
