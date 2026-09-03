@@ -3,7 +3,9 @@
    ================================================== */
 
 .main-nav a.active {
-  color: var(--red);
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 .brand {
@@ -613,6 +615,7 @@
     0
     clamp(1rem, 2vw, 1.4rem);
   object-fit: contain;
+  cursor: zoom-in;
 }
 
 

@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (lightbox && lightboxImage && closeBtn) {
     const zoomableImages = document.querySelectorAll(
+      ".context-content__image, " +
       ".process-image, " +
       ".target-card, " +
       ".process-gallery img, " +
@@ -19,6 +20,19 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     let scale = 1;
+    let zoomBounds = null;
+
+    function setZoomOrigin(event, refreshBounds = false) {
+      if (refreshBounds || !zoomBounds) {
+        zoomBounds = lightboxImage.getBoundingClientRect();
+      }
+
+      const rect = zoomBounds;
+      const originX = Math.min(100, Math.max(0, ((event.clientX - rect.left) / rect.width) * 100));
+      const originY = Math.min(100, Math.max(0, ((event.clientY - rect.top) / rect.height) * 100));
+
+      lightboxImage.style.transformOrigin = `${originX}% ${originY}%`;
+    }
 
     function updateZoom() {
       lightboxImage.style.transform = `scale(${scale})`;
@@ -30,6 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
       lightboxImage.alt = img.alt || "";
 
       scale = 1;
+      zoomBounds = null;
+      lightboxImage.style.transformOrigin = "center";
       updateZoom();
 
       lightbox.classList.add("active");
@@ -44,6 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
       lightboxImage.src = "";
 
       scale = 1;
+      zoomBounds = null;
+      lightboxImage.style.transformOrigin = "center";
       updateZoom();
     }
 
@@ -54,8 +72,22 @@ document.addEventListener("DOMContentLoaded", () => {
     lightboxImage.addEventListener("click", (event) => {
       event.stopPropagation();
 
-      scale = scale === 1 ? 2 : 1;
+      if (scale === 1) {
+        setZoomOrigin(event, true);
+        scale = 2;
+      } else {
+        scale = 1;
+        zoomBounds = null;
+        lightboxImage.style.transformOrigin = "center";
+      }
+
       updateZoom();
+    });
+
+    lightboxImage.addEventListener("mousemove", (event) => {
+      if (scale > 1) {
+        setZoomOrigin(event);
+      }
     });
 
     lightboxImage.addEventListener(
@@ -65,7 +97,17 @@ document.addEventListener("DOMContentLoaded", () => {
         event.stopPropagation();
 
         const zoomDirection = event.deltaY < 0 ? 0.2 : -0.2;
+
+        if (zoomDirection > 0 || scale > 1) {
+          setZoomOrigin(event, scale === 1);
+        }
+
         scale = Math.min(4, Math.max(1, scale + zoomDirection));
+
+        if (scale === 1) {
+          zoomBounds = null;
+          lightboxImage.style.transformOrigin = "center";
+        }
 
         updateZoom();
       },

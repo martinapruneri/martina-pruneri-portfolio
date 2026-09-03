@@ -1,7 +1,9 @@
 /* ---------- nav active state ---------- */
 
 .main-nav a.active {
-  color: var(--red);
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 .brand {
