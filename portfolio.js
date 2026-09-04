@@ -73,19 +73,19 @@ const profiles = [
     ]
   },
   {
-    photo: 'assets/polaroid3.png',
-    heading: 'What do I like?',
-    paragraphs: [
-      "<strong>My biggest passion has always been traveling</strong>. One of my most recent goals was to visit 20 countries before turning 20, a milestone which I just achieved and am really grateful for.",
-      "Every trip has taught me something new, and <strong>exploring unknown places while meeting amazing people from diverse backgrounds is what excites me the most</strong>. This doesn't only benefit me in my private life, but also as a designer, giving me new ideas and points of view."
-    ]
-  },
-  {
     photo: 'assets/polaroid4.png',
     heading: 'Where am I from?',
     paragraphs: [
       "I was born in a <strong>village on the Italian Alps</strong> close to Switzerland, and although I grew up in a bigger city near Milan, the mountains have always been the place where I feel the most in my element.",
       "Spending my summers there as a child deepened my <strong>love for nature</strong>, and even to this day, whenever I need a break you'll probably find me somewhere above 1200 meters."
+    ]
+  },
+  {
+    photo: 'assets/polaroid3.png',
+    heading: 'What do I like?',
+    paragraphs: [
+      "<strong>My biggest passion has always been traveling</strong>. One of my most recent goals was to visit 20 countries before turning 20, a milestone which I just achieved and am really grateful for.",
+      "Every trip has taught me something new, and <strong>exploring unknown places while meeting amazing people from diverse backgrounds is what excites me the most</strong>. This doesn't only benefit me in my private life, but also as a designer, giving me new ideas and points of view."
     ]
   },
   {
