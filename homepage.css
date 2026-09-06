@@ -288,6 +288,12 @@ ul {
   margin-inline: auto;
 }
 
+.carousel__mobile-track,
+.carousel__dots,
+.profile-dots {
+  display: none;
+}
+
 .carousel__arrow {
   flex: 0 0 auto;
   width: 62px;
@@ -447,6 +453,10 @@ ul {
   max-width: 85ch;
 }
 
+.profile-mobile-track {
+  display: none;
+}
+
 .polaroid-stack {
   flex: 0 0 auto;
   position: relative;
@@ -541,6 +551,10 @@ p.site-footer__copy {
   width: clamp(280px, 34vw, 560px);
 }
 
+.site-footer__picture {
+  display: contents;
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 780px) {
@@ -587,5 +601,200 @@ p.site-footer__copy {
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-footer {
+    padding-inline: 0;
+    gap: 0.5rem;
+  }
+
+  .site-footer__contact {
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
+  }
+
+  .site-footer > .site-footer__contact {
+    margin-top: 1.5rem;
+  }
+
+  .site-footer__logo {
+    width: 100%;
+    height: auto;
+  }
+
+  .site-footer__picture {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1131 / 600;
+    overflow: hidden;
+  }
+
+  .who-am-i:has(.profile-mobile-track) > .who-am-i__text,
+  .who-am-i:has(.profile-mobile-track) > .polaroid-stack {
+    display: none;
+  }
+
+  .profile-mobile-track {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .profile-mobile-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .profile-mobile-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    flex: 0 0 100%;
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .profile-mobile-slide .polaroid-stack {
+    max-width: 100%;
+  }
+
+  .profile-mobile-slide .polaroid-stack:hover .polaroid-stack__photo {
+    transform: none;
+  }
+
+  .who-am-i {
+    gap: 1rem;
+  }
+
+  .who-am-i__text {
+    flex: 0 1 auto;
+  }
+
+  .who-am-i__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .carousel:has(.carousel__mobile-track) > .carousel__arrow,
+  .carousel:has(.carousel__mobile-track) > .carousel__slide {
+    display: none;
+  }
+
+  .carousel__mobile-track {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .carousel__mobile-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel__mobile-track > .carousel__slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .carousel__mobile-track .carousel__info {
+    flex: 0 1 auto;
+  }
+
+  .carousel__dots,
+  .profile-dots {
+    display: flex;
+    justify-content: center;
+  }
+
+  .carousel__dots button,
+  .profile-dots button {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+  }
+
+  .carousel__dots button::before,
+  .profile-dots button::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--blue);
+    border-radius: 50%;
+  }
+
+  .carousel__dots button[aria-current="true"]::before,
+  .profile-dots button[aria-current="true"]::before {
+    background: var(--blue);
+  }
+
+  .profile-dots button::before {
+    border-color: var(--pale-bg);
+  }
+
+  .profile-dots button[aria-current="true"]::before {
+    background: var(--pale-bg);
+  }
+
+  .intro {
+    gap: 1rem;
+  }
+
+  .intro__text .heading {
+    margin-top: 1.5rem;
+  }
+
+  .intro__text {
+    display: contents;
+  }
+
+  .intro__text p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .intro__text .btn-img {
+    order: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .intro__text,
+  .intro__img {
+    flex: 0 1 auto;
+  }
+
+  .intro__img {
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1180px) {
+  .site-footer {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    text-align: left;
+  }
+
+  .site-footer__contact {
+    margin-block: 1rem;
+  }
+
+  .site-footer__logo {
+    position: absolute;
+    grid-column: 2;
+    grid-row: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }

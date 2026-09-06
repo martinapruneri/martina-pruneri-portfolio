@@ -19,7 +19,23 @@
 
 /* ---------- projects page ---------- */
 
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+body > .site-header,
+body > .site-footer {
+  flex-shrink: 0;
+}
+
 .projects-page {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: var(--pale-bg);
   padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 4rem);
 }
@@ -27,20 +43,21 @@
 .projects-page > .heading {
   text-align: center;
   font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
 .project-row {
   display: flex;
+  width: 100%;
   align-items: center;
   gap: clamp(2rem, 5vw, 4rem);
   max-width: 1320px;
   margin: 0 auto;
-  padding-bottom: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
 }
 
 .project-row:last-of-type {
-  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  padding-bottom: 0;
 }
 
 .project-row--reverse {
@@ -60,7 +77,48 @@
   margin-bottom: 0.8rem;
 }
 
+.site-footer__contact {
+  margin-block: 1rem;
+}
+
 /* ---------- responsive ---------- */
+
+@media (max-width: 767px) {
+  .project-row:not(:last-of-type) {
+    padding-bottom: 4rem;
+  }
+
+  .project-row .carousel__info {
+    flex: 0 1 auto;
+  }
+
+  .blaasol-info {
+    margin-left: 0;
+  }
+
+  .blaasol-info + .carousel__mockup {
+    order: -1;
+  }
+}
+
+@media (min-width: 781px) {
+  .site-footer {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .site-footer__logo {
+    position: absolute;
+    grid-column: 2;
+    grid-row: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
 
 @media (max-width: 780px) {
   .project-row,

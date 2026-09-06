@@ -1034,7 +1034,8 @@
   }
 
   .vpc-character--solution {
-    width: 215px;
+    order: -1;
+    width: 230px;
     max-width: none;
     margin: 0 auto 1rem;
   }
@@ -1062,7 +1063,8 @@
   }
 
   .vpc-character--solution {
-    width: 180px;
+    width: 195px;
+    max-width: none;
   }
 
   .vpc-content h4 {
@@ -1636,4 +1638,152 @@
 
 .product-reflection p:last-child {
   margin-bottom: 0;
+}
+
+/* Keep the mobile case navigation below the navbar when it wraps. */
+@media (max-width: 767px) {
+  .case-section--product {
+    padding-bottom: 0;
+  }
+
+  .case-section--product + .back-to-top {
+    padding-block: 1.5rem;
+  }
+
+  .process-subtitle {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+  }
+
+  .process-subtitle__bullet {
+    font-size: 1em;
+  }
+
+  .vpc-grid {
+    gap: 1rem;
+  }
+
+  .hmw-question-box {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    padding-top: 6rem;
+  }
+
+  .process-block:has(.hmw-question-box) {
+    margin-bottom: calc(72px + 1rem);
+  }
+
+  .hmw-question-box h4 {
+    left: 1.3rem;
+    right: 1.3rem;
+    text-align: center;
+  }
+
+  .context-block--target .target-card {
+    margin-bottom: 0;
+  }
+
+  .problem-statement {
+    margin-top: 1.5rem;
+    margin-bottom: 35px;
+  }
+
+  .problem-statement h3 {
+    font-size: clamp(1.15rem, 5.7vw, 1.6rem);
+  }
+
+  .problem-statement p {
+    font-size: 1.3rem;
+  }
+
+  .case-hero__images {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .case-hero__pc,
+  .case-hero__phone {
+    width: auto;
+    height: clamp(145px, 44vw, 320px);
+    min-width: 0;
+    object-fit: contain;
+  }
+
+  .case-hero__phone {
+    margin-bottom: 0;
+  }
+
+  .case-summary {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    gap: 2rem;
+  }
+
+  .case-summary__main > .case-summary__block:last-child {
+    margin-bottom: 0;
+  }
+
+  .case-section--context {
+    padding-top: 0;
+  }
+
+  .case-summary__side > .case-summary__item:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .case-summary__side {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case-summary__cta {
+    order: -1;
+    align-self: center;
+    margin: 0 auto 2rem;
+    max-width: 100%;
+  }
+
+  .case-statement {
+    padding-block: 2rem;
+    background-image: url("assets/hiddenwalls/orangerectangle-mobile.svg");
+  }
+
+  .case-topbar {
+    top: var(--case-mobile-header-h, var(--header-h));
+  }
+
+  #context,
+  #process,
+  #product,
+  .context-block,
+  .problem-statement,
+  .process-block {
+    scroll-margin-top: calc(var(--case-mobile-header-h, var(--header-h)) + var(--case-mobile-topbar-h, 90px) + 16px);
+  }
+
+  .context-overview,
+  .process-overview {
+    position: static;
+    top: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .process-block:has(.hmw-question-box) {
+    margin-bottom: calc(46px + 1rem);
+  }
+}
+
+@media (max-width: 767px) {
+  #wireframes {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #wireframes > .wireframes-showcase {
+    order: 1;
+  }
+
+  #wireframes > .wireframes-prototype {
+    margin-top: 0.5rem;
+  }
 }

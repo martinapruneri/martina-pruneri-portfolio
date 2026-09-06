@@ -1,4 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const siteHeader = document.querySelector('.site-header');
+  const caseTopbar = document.querySelector('.case-topbar');
+  if (siteHeader && caseTopbar) {
+    const updateStickyHeights = () => {
+      document.documentElement.style.setProperty('--case-mobile-header-h', `${siteHeader.getBoundingClientRect().height}px`);
+      document.documentElement.style.setProperty('--case-mobile-topbar-h', `${caseTopbar.getBoundingClientRect().height}px`);
+    };
+    const stickyResizeObserver = new ResizeObserver(updateStickyHeights);
+    stickyResizeObserver.observe(siteHeader);
+    stickyResizeObserver.observe(caseTopbar);
+    updateStickyHeights();
+  }
+
   /* =========================
      LIGHTBOX
      ========================= */

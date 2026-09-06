@@ -55,6 +55,104 @@ document.getElementById('nextProject').addEventListener('click', () => {
   renderProject(currentProject);
 });
 
+// Keep the existing arrow carousel and provide native scrolling on phones.
+const carousel = document.querySelector('.carousel');
+const mobileTrack = document.createElement('div');
+mobileTrack.className = 'carousel__mobile-track';
+mobileTrack.id = 'mobileProjects';
+mobileTrack.setAttribute('role', 'region');
+mobileTrack.setAttribute('aria-label', 'Projects');
+mobileTrack.tabIndex = 0;
+const mobileDots = document.createElement('div');
+mobileDots.className = 'carousel__dots';
+mobileDots.setAttribute('role', 'group');
+mobileDots.setAttribute('aria-label', 'Choose a project');
+
+projects.forEach((project, index) => {
+  const slide = carousel.querySelector('.carousel__slide').cloneNode(true);
+  slide.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'));
+  slide.setAttribute('role', 'group');
+  slide.setAttribute('aria-label', `${index + 1} of ${projects.length}: ${project.title}`);
+  if (index > 0) {
+    const mockup = slide.querySelector('.carousel__mockup-inner');
+    mockup.replaceChildren(...project.images.map(image => {
+      const img = document.createElement('img');
+      img.src = image.src;
+      img.alt = image.alt;
+      return img;
+    }));
+    slide.querySelector('h3').textContent = project.title;
+    slide.querySelector('.carousel__tags').innerHTML = project.tags;
+    slide.querySelector('.carousel__desc').textContent = project.description;
+    slide.querySelector('.btn-img').href = project.link;
+  }
+  mobileTrack.appendChild(slide);
+
+  const dot = document.createElement('button');
+  dot.type = 'button';
+  dot.setAttribute('aria-label', `Show ${project.title}`);
+  dot.setAttribute('aria-controls', mobileTrack.id);
+  dot.setAttribute('aria-current', String(index === 0));
+  dot.addEventListener('click', () => {
+    mobileTrack.scrollTo({
+      left: (index + 1) * mobileTrack.clientWidth,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+    });
+  });
+  mobileDots.appendChild(dot);
+});
+
+const firstSlideCopy = mobileTrack.firstElementChild.cloneNode(true);
+const lastSlideCopy = mobileTrack.lastElementChild.cloneNode(true);
+mobileTrack.prepend(lastSlideCopy);
+mobileTrack.append(firstSlideCopy);
+
+let mobileProjectIndex = 0;
+let scrollSettledTimer;
+let isTouchingCarousel = false;
+
+function settleMobileCarousel() {
+  if (isTouchingCarousel || !mobileTrack.clientWidth) return;
+  const position = Math.round(mobileTrack.scrollLeft / mobileTrack.clientWidth);
+  if (position === 0 || position === projects.length + 1) {
+    mobileTrack.scrollTo({
+      left: (mobileProjectIndex + 1) * mobileTrack.clientWidth,
+      behavior: 'instant'
+    });
+  }
+}
+
+mobileTrack.addEventListener('touchstart', () => {
+  isTouchingCarousel = true;
+}, { passive: true });
+function endCarouselTouch() {
+  isTouchingCarousel = false;
+  clearTimeout(scrollSettledTimer);
+  scrollSettledTimer = setTimeout(settleMobileCarousel, 150);
+}
+mobileTrack.addEventListener('touchend', endCarouselTouch, { passive: true });
+mobileTrack.addEventListener('touchcancel', endCarouselTouch, { passive: true });
+mobileTrack.addEventListener('scrollend', settleMobileCarousel);
+mobileTrack.addEventListener('scroll', () => {
+  if (!mobileTrack.clientWidth) return;
+  const position = Math.round(mobileTrack.scrollLeft / mobileTrack.clientWidth);
+  mobileProjectIndex = (position - 1 + projects.length) % projects.length;
+  [...mobileDots.children].forEach((dot, dotIndex) => {
+    dot.setAttribute('aria-current', String(dotIndex === mobileProjectIndex));
+  });
+  clearTimeout(scrollSettledTimer);
+  scrollSettledTimer = setTimeout(settleMobileCarousel, 150);
+}, { passive: true });
+carousel.append(mobileTrack, mobileDots);
+new ResizeObserver(() => {
+  if (mobileTrack.clientWidth) {
+    mobileTrack.scrollTo({
+      left: (mobileProjectIndex + 1) * mobileTrack.clientWidth,
+      behavior: 'instant'
+    });
+  }
+}).observe(mobileTrack);
+
 const profiles = [
   {
     photo: 'assets/polaroid1.png',
@@ -104,13 +202,118 @@ const whoAmIHeading = document.getElementById('whoAmIHeading');
 const whoAmIPara1 = document.getElementById('whoAmIPara1');
 const whoAmIPara2 = document.getElementById('whoAmIPara2');
 
-document.getElementById('polaroidStack').addEventListener('click', () => {
-  currentProfile = (currentProfile + 1) % profiles.length;
+const polaroidStack = document.getElementById('polaroidStack');
+const profileSection = document.querySelector('.who-am-i');
+const profileDots = document.createElement('div');
+profileDots.className = 'profile-dots';
+profileDots.setAttribute('role', 'group');
+profileDots.setAttribute('aria-label', 'Choose a photo');
+profiles.forEach((profile, index) => {
+  const dot = document.createElement('button');
+  dot.type = 'button';
+  dot.setAttribute('aria-label', `Show photo ${index + 1}: ${profile.heading}`);
+  dot.setAttribute('aria-current', String(index === 0));
+  dot.addEventListener('click', event => {
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      scrollToProfile(index + 1);
+    } else {
+      changeProfile(index - currentProfile);
+    }
+  });
+  profileDots.appendChild(dot);
+});
+profileSection.appendChild(profileDots);
+
+function changeProfile(direction) {
+  currentProfile = (currentProfile + direction + profiles.length) % profiles.length;
   const profile = profiles[currentProfile];
   polaroidImg.src = profile.photo;
+  [...profileDots.children].forEach((dot, index) => {
+    dot.setAttribute('aria-current', String(index === currentProfile));
+  });
   whoAmIHeading.textContent = profile.heading;
   if (profile.paragraphs) {
     whoAmIPara1.innerHTML = profile.paragraphs[0];
     whoAmIPara2.innerHTML = profile.paragraphs[1];
   }
+}
+
+polaroidStack.addEventListener('click', () => changeProfile(1));
+
+// Use the same native scrolling and looping as the mobile project carousel.
+const profileTrack = document.createElement('div');
+profileTrack.className = 'profile-mobile-track';
+profileTrack.id = 'mobileProfiles';
+profileTrack.setAttribute('role', 'region');
+profileTrack.setAttribute('aria-label', 'About Martina');
+profileTrack.tabIndex = 0;
+profiles.forEach((profile, index) => {
+  const slide = document.createElement('div');
+  slide.className = 'profile-mobile-slide';
+  slide.setAttribute('role', 'group');
+  slide.setAttribute('aria-label', `${index + 1} of ${profiles.length}: ${profile.heading}`);
+  const text = profileSection.querySelector('.who-am-i__text').cloneNode(true);
+  text.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'));
+  if (index > 0) {
+    text.querySelector('h2').textContent = profile.heading;
+    text.querySelectorAll('p').forEach((paragraph, i) => {
+      paragraph.innerHTML = profile.paragraphs[i];
+    });
+  }
+  const photo = polaroidStack.cloneNode(true);
+  photo.removeAttribute('id');
+  photo.querySelector('img').removeAttribute('id');
+  photo.querySelector('img').src = profile.photo;
+  slide.append(text, photo);
+  profileTrack.appendChild(slide);
 });
+profileTrack.prepend(profileTrack.lastElementChild.cloneNode(true));
+profileTrack.append(profileTrack.children[1].cloneNode(true));
+profileSection.insertBefore(profileTrack, profileDots);
+[...profileDots.children].forEach(dot => dot.setAttribute('aria-controls', profileTrack.id));
+
+let mobileProfileIndex = 0;
+let profileScrollTimer;
+let isTouchingProfile = false;
+function scrollToProfile(position, behavior = 'smooth') {
+  profileTrack.scrollTo({
+    left: position * profileTrack.clientWidth,
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : behavior
+  });
+}
+function settleProfileCarousel() {
+  if (isTouchingProfile || !profileTrack.clientWidth) return;
+  const position = Math.round(profileTrack.scrollLeft / profileTrack.clientWidth);
+  if (position === 0 || position === profiles.length + 1) {
+    scrollToProfile(mobileProfileIndex + 1, 'instant');
+  }
+}
+profileTrack.addEventListener('click', event => {
+  if (event.target.closest('.polaroid-stack')) {
+    scrollToProfile(mobileProfileIndex + 2);
+  }
+});
+profileTrack.addEventListener('touchstart', () => {
+  isTouchingProfile = true;
+}, { passive: true });
+function endProfileTouch() {
+  isTouchingProfile = false;
+  clearTimeout(profileScrollTimer);
+  profileScrollTimer = setTimeout(settleProfileCarousel, 150);
+}
+profileTrack.addEventListener('touchend', endProfileTouch, { passive: true });
+profileTrack.addEventListener('touchcancel', endProfileTouch, { passive: true });
+profileTrack.addEventListener('scrollend', settleProfileCarousel);
+profileTrack.addEventListener('scroll', () => {
+  if (!profileTrack.clientWidth) return;
+  const position = Math.round(profileTrack.scrollLeft / profileTrack.clientWidth);
+  mobileProfileIndex = (position - 1 + profiles.length) % profiles.length;
+  [...profileDots.children].forEach((dot, index) => {
+    dot.setAttribute('aria-current', String(index === mobileProfileIndex));
+  });
+  clearTimeout(profileScrollTimer);
+  profileScrollTimer = setTimeout(settleProfileCarousel, 150);
+}, { passive: true });
+new ResizeObserver(() => {
+  if (profileTrack.clientWidth) scrollToProfile(mobileProfileIndex + 1, 'instant');
+}).observe(profileTrack);

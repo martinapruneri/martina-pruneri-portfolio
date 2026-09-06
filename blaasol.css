@@ -198,6 +198,13 @@
   background-size: 100% 100%;
 }
 
+@media (min-width: 768px) and (max-width: 1180px) {
+  .case-statement {
+    padding-block: clamp(3.5rem, 6vw, 4.5rem);
+    background-size: cover;
+  }
+}
+
 .case-statement p {
   width: 100%;
   margin: 0 auto;
@@ -1161,7 +1168,8 @@
   }
 
   .vpc-character--solution {
-    width: 215px;
+    order: -1;
+    width: 230px;
     max-width: none;
     margin: 0 auto 1rem;
   }
@@ -1189,7 +1197,8 @@
   }
 
   .vpc-character--solution {
-    width: 180px;
+    width: 195px;
+    max-width: none;
   }
 
   .vpc-content h4 {
@@ -1802,4 +1811,389 @@
 
 .product-reflection p:last-child {
   margin-bottom: 0;
+}
+
+
+/* Keep the mobile case navigation below the navbar when it wraps. */
+@media (max-width: 767px) {
+  .case-section--product {
+    padding-bottom: 0;
+  }
+
+  .case-section--product + .back-to-top {
+    padding-block: 1.5rem;
+  }
+
+  .process-subtitle {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+  }
+
+  .process-subtitle__bullet {
+    font-size: 1em;
+  }
+
+  .vpc-grid {
+    gap: 1rem;
+  }
+
+  .hmw-question-box {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    padding-top: 6rem;
+  }
+
+  .process-block:has(.hmw-question-box) {
+    margin-bottom: calc(72px + 1rem);
+  }
+
+  .hmw-question-box h4 {
+    left: 1.3rem;
+    right: 1.3rem;
+    text-align: center;
+  }
+
+  .context-block--target .target-card {
+    margin-bottom: 0;
+  }
+
+  .problem-statement {
+    margin-top: 1.5rem;
+    margin-bottom: 35px;
+  }
+
+  .problem-statement h3 {
+    font-size: clamp(1.15rem, 5.7vw, 1.6rem);
+  }
+
+  .problem-statement p {
+    font-size: 1.3rem;
+  }
+
+  .case-hero__images {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .case-hero__pc,
+  .case-hero__phone {
+    width: auto;
+    height: clamp(145px, 44vw, 320px);
+    min-width: 0;
+    object-fit: contain;
+  }
+
+  .case-hero__phone {
+    margin-bottom: 0;
+  }
+
+  .case-summary {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    gap: 2rem;
+  }
+
+  .case-summary__main > .case-summary__block:last-child {
+    margin-bottom: 0;
+  }
+
+  .case-section--context {
+    padding-top: 0;
+  }
+
+  .case-summary__side > .case-summary__item:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .case-summary__side {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case-summary__cta {
+    order: -1;
+    align-self: center;
+    margin: 0 auto 2rem;
+    max-width: 100%;
+  }
+
+  .case-statement {
+    padding-block: 2rem;
+    background-image: url("assets/hiddenwalls/orangerectangle-mobile.svg");
+  }
+
+  .case-topbar {
+    top: var(--case-mobile-header-h, var(--header-h));
+  }
+
+  #context,
+  #process,
+  #product,
+  .context-block,
+  .problem-statement,
+  .process-block {
+    scroll-margin-top: calc(var(--case-mobile-header-h, var(--header-h)) + var(--case-mobile-topbar-h, 90px) + 16px);
+  }
+
+  .context-overview,
+  .process-overview {
+    position: static;
+    top: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .process-block:has(.hmw-question-box) {
+    margin-bottom: calc(46px + 1rem);
+  }
+}
+
+/* Blå Sol mobile layouts, aligned with the Hidden Walls case study. */
+@media (max-width: 767px) {
+  .case-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-inline: 1.2rem;
+  }
+
+  .case-breadcrumb {
+    white-space: normal;
+  }
+
+  .case-sectionnav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .case-sectionnav__link {
+    font-size: clamp(0.9rem, 3vw, 1.25rem);
+  }
+
+  .case-hero {
+    padding-inline: 1rem;
+  }
+
+  .case-hero__images {
+    gap: 0.8rem;
+  }
+
+  .case-title {
+    font-size: clamp(2.4rem, 13vw, 3.6rem);
+  }
+
+  .case-summary {
+    grid-template-columns: 1fr;
+    padding-inline: 1.5rem;
+  }
+
+  .case-section--context,
+  .case-section--process,
+  .case-section--product {
+    padding-inline: 1rem;
+  }
+
+  .case-section__inner {
+    padding: 1.5rem 1rem;
+  }
+
+  .case-section__title {
+    width: min(88%, 420px);
+  }
+
+  .context-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .context-layout,
+  .process-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .context-block {
+    margin-bottom: 3rem;
+  }
+
+  .context-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .context-block h3 {
+    font-size: 1.55rem;
+  }
+
+  .problem-statement {
+    padding: 2.5rem 1.4rem;
+  }
+
+  .problem-statement h3 {
+    text-align: center;
+  }
+
+  .problem-statement::before {
+    left: 2rem;
+    bottom: -38px;
+    border-top-width: 38px;
+    border-right-width: 30px;
+  }
+
+  .problem-statement::after {
+    left: calc(2rem + 5px);
+    bottom: -28px;
+    border-top-width: 29px;
+    border-right-width: 22px;
+  }
+
+  .case-section--product .case-section__inner {
+    --product-side-padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-header {
+    order: -2;
+    margin-bottom: 1.5rem;
+  }
+
+  .product-button {
+    order: -1;
+    align-self: center;
+    max-width: 100%;
+    margin: 0 auto 2rem;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .product-card--phone,
+  .product-card--phone:nth-child(n),
+  .product-card--phone:last-child {
+    grid-column: 1;
+    width: min(72%, 300px);
+  }
+}
+
+@media (min-width: 601px) and (max-width: 767px) {
+  .case-topbar {
+    padding-inline: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .case-breadcrumb {
+    white-space: nowrap;
+  }
+
+  .case-sectionnav {
+    overflow-x: visible;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .case-sectionnav {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 767px) {
+  .context-overview,
+  .process-overview {
+    width: 100%;
+    max-width: none;
+    text-align: center;
+    position: static;
+    top: auto;
+  }
+
+  .context-overview h2 {
+    margin-bottom: 0.65rem;
+    font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+  }
+
+  .context-overview__nav,
+  .process-overview__nav {
+    align-items: center;
+  }
+
+  .context-overview__nav {
+    gap: 0;
+  }
+
+  .context-overview__group {
+    align-items: flex-start;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .context-overview__nav > a,
+  .context-overview__group > a,
+  .context-overview__group li a {
+    font-size: clamp(0.95rem, 1.4vw, 1.12rem);
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  .context-overview__nav > a {
+    text-align: center;
+  }
+
+  .context-overview__group > a {
+    text-align: left;
+  }
+
+  .context-overview__group ul {
+    margin: 0.35rem 0 0.35rem 1.8rem;
+    text-align: left;
+  }
+
+  .context-overview__figjam {
+    width: min(100%, 240px);
+    margin: 1.5rem auto 0;
+  }
+}
+
+@media (max-width: 767px) {
+  #wireframes {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #wireframes > .wireframes-showcase {
+    order: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .context-overview__group li a {
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .context-overview__group li a::before {
+    font-size: 1.15em;
+  }
+}
+
+@media (max-width: 767px) {
+  #wireframes > .wireframes-prototype {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  #wireframes > ul {
+    margin-bottom: 2rem;
+  }
+
+  #wireframes > ul > li:last-child {
+    margin-bottom: 0;
+  }
+
+  #wireframes > ul + p {
+    margin-top: 0;
+  }
 }
