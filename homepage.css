@@ -605,6 +605,10 @@ p.site-footer__copy {
 }
 
 @media (max-width: 767px) {
+  .projects .heading .spark {
+    display: none;
+  }
+
   .site-footer {
     padding-inline: 0;
     gap: 0.5rem;
@@ -639,6 +643,7 @@ p.site-footer__copy {
     display: flex;
     width: 100%;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
   }
