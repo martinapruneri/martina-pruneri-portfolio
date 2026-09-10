@@ -32,8 +32,8 @@
 .contacts-hero {
   display: flex;
   align-items: stretch;
-  justify-content: space-between;
-  gap: clamp(2rem, 5vw, 4rem);
+  justify-content: center;
+  gap: clamp(4rem, 16vw, 16rem);
 }
 
 .contacts-hero__text {
@@ -43,14 +43,16 @@
 }
 
 .contacts-hero .heading {
-  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-size: clamp(3.5rem, 8.5vw, 7rem);
   line-height: 1;
 }
 
 .contacts-hero__img {
   flex: 0 0 auto;
-  width: auto;
-  height: 100%;
+  width: min(34vw, 400px);
+  max-width: 100%;
+  height: auto;
+  align-self: center;
   object-fit: contain;
 }
 
@@ -88,40 +90,113 @@
 
 /* ---------- responsive ---------- */
 
-@media (max-width: 767px) {
-  .contacts-page {
-    min-height: calc(100vh - var(--header-h));
-    min-height: calc(100svh - var(--header-h));
-    padding-block: 5rem;
+@media (min-width: 781px) {
+  .contacts-hero__text {
+    /* Match the portrait's 1200 × 1881 aspect ratio. */
+    height: min(53.295vw, 627px);
+    align-self: center;
   }
 
-  .contacts-hero__img {
-    order: -1;
-    margin-inline: auto;
+  .contacts-hero .heading {
+    text-box-trim: trim-start;
+    text-box-edge: cap alphabetic;
+  }
+
+  .contact-methods {
+    margin-bottom: 0;
   }
 }
 
 @media (min-width: 781px) and (max-width: 1180px) {
+  .contacts-page {
+    padding-inline: 2rem;
+  }
+
   .contacts-hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) min(32vw, 360px);
+    gap: clamp(2rem, 4vw, 3rem);
+    max-width: 1000px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .contacts-hero__text {
+    min-width: 0;
+    height: min(50.16vw, 564.3px);
+  }
+
+  .contacts-hero .heading {
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
   }
 
   .contacts-hero__img {
     width: 100%;
-    height: auto;
-    align-self: center;
+  }
+
+  .contact-methods a,
+  .site-footer__contact a {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .site-footer__contact {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .contacts-page {
+    min-height: calc(100vh - var(--header-h));
+    min-height: calc(100svh - var(--header-h));
+    padding-block: 1.5rem 3rem;
+  }
+
+  .contacts-hero__img {
+    margin-inline: auto;
   }
 }
 
 @media (max-width: 780px) {
+  .contacts-page {
+    padding-top: 1.25rem;
+    justify-content: flex-start;
+  }
+
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  .main-nav {
+    flex-wrap: wrap;
+  }
+
+  .contacts-hero__text,
+  .contact-methods li,
+  .site-footer__contact {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .contact-methods a,
+  .site-footer__contact a {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .contacts-hero .heading {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
   .contacts-hero {
     flex-direction: column;
     text-align: center;
+    gap: 2rem;
   }
 
   .contacts-hero__img {
-    width: clamp(220px, 60vw, 360px);
+    width: min(65vw, 300px);
     height: auto;
   }
 
