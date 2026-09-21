@@ -411,10 +411,41 @@ ul {
   gap: 0.7rem;
 }
 
-.programs__list img {
+.programs__icon {
   width: 110px;
   height: 110px;
-  border-radius: 26px;
+  /* Match the WordPress asset's 28px corners on its 151px square. */
+  border-radius: 18.543%;
+  overflow: hidden;
+  background: #fff;
+}
+
+.programs__icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.programs__icon--figma {
+  background: #000;
+}
+
+.programs__icon--photoshop {
+  background: #001e36;
+}
+
+.programs__icon--illustrator {
+  background: #330000;
+}
+
+.programs__icon--canva img {
+  transform: scale(1.06);
+}
+
+.programs__icon--vscode img,
+.programs__icon--capcut img {
+  transform: scale(1.04);
 }
 
 .programs__list span {
