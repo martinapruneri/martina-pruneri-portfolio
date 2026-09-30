@@ -77,6 +77,10 @@ body > .site-footer {
   margin-bottom: 0.8rem;
 }
 
+.project-status {
+  color: var(--red);
+}
+
 .site-footer__contact {
   margin-block: 1rem;
 }
