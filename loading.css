@@ -37,6 +37,15 @@
   display: block;
   width: clamp(150px, 14.3vw, 216px);
   height: auto;
+  transform-origin: center;
+}
+
+.is-loading .page-loader__star {
+  animation: loader-star-rotate 2s ease-in-out infinite;
+}
+
+@keyframes loader-star-rotate {
+  to { transform: rotate(360deg); }
 }
 
 .page-loader__text {
@@ -51,4 +60,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .page-loader { transition: none; }
+  .is-loading .page-loader__star { animation: none; }
 }
