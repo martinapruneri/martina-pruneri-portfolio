@@ -83,7 +83,7 @@
   align-items: center;
   gap: 1.5rem;
 
-  padding: 1.15rem clamp(1.5rem, 4vw, 3rem);
+  padding: 1.15rem var(--site-gutter);
   background: var(--pale-bg);
 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
@@ -1952,7 +1952,7 @@
   .case-topbar {
     flex-direction: column;
     align-items: flex-start;
-    padding-inline: 1.2rem;
+    padding-inline: var(--site-gutter);
   }
 
   .case-breadcrumb {
@@ -2079,7 +2079,7 @@
 
 @media (min-width: 601px) and (max-width: 767px) {
   .case-topbar {
-    padding-inline: clamp(1.5rem, 4vw, 3rem);
+    padding-inline: var(--site-gutter);
   }
 
   .case-breadcrumb {

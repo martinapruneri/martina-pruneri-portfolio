@@ -31,6 +31,7 @@
   --font-body: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
   --header-h: 64px;
+  --site-gutter: clamp(1.5rem, 5vw, 4rem);
 }
 
 * {
@@ -129,7 +130,7 @@ ul {
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
   min-height: var(--header-h);
-  padding: 1.1rem clamp(1.5rem, 5vw, 4rem);
+  padding: 1.1rem var(--site-gutter);
   background: var(--blue);
   font-family: 'Malevice Inkbleed';
 }
@@ -833,4 +834,36 @@ p.site-footer__copy {
     height: 100%;
     object-fit: cover;
   }
+}
+
+/* Shared mobile navigation */
+.menu-toggle { display: none; }
+@media (max-width: 780px) {
+  .site-header.menu-ready { flex-wrap: nowrap; }
+  .site-header.menu-ready .brand { font-size: clamp(1rem, 4.3vw, 1.3rem); white-space: nowrap; }
+  .site-header.menu-ready .menu-toggle { display: flex; flex: 0 0 44px; width: 44px; height: 44px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; border: 0; background: transparent; color: white; cursor: pointer; }
+  .menu-toggle span { width: 25px; height: 2px; background: currentColor; transition: transform .2s ease, opacity .2s ease; }
+  .menu-toggle:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+  .site-header.menu-ready .main-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 12px var(--site-gutter) 20px; background: var(--blue); flex-direction: column; align-items: stretch; gap: 0; box-shadow: 0 8px 12px #0002; }
+  .site-header.menu-ready.menu-open .main-nav { display: flex; }
+  .site-header.menu-ready .main-nav a { display: flex; align-items: center; min-height: 48px; padding-block: 10px; }
+  .menu-open .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+  .menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+@media (prefers-reduced-motion: reduce) { .menu-toggle span { transition: none; } }
+
+/* Continuous desktop program reel. Duplicate list completes a seamless loop. */
+.programs__list--copy { display: none; }
+@media (min-width: 781px) {
+  .programs__marquee { --program-gap: max(80px, calc((100vw - 660px) / 6)); --program-cycle: calc(7 * (110px + var(--program-gap))); width: 100vw; margin-inline: calc(50% - 50vw); overflow: hidden; }
+  .programs__track { display: flex; width: calc(2 * var(--program-cycle)); animation: programs-scroll 20s linear infinite; will-change: transform; }
+  .programs__track .programs__list { display: flex; flex: 0 0 var(--program-cycle); width: var(--program-cycle); flex-wrap: nowrap; align-items: flex-start; justify-content: flex-start; gap: var(--program-gap); padding-right: var(--program-gap); }
+  .programs__track .programs__list li { flex: 0 0 110px; width: 110px; }
+  @keyframes programs-scroll { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--program-cycle))); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .programs__track { animation: none; width: auto; }
+  .programs__track .programs__list { flex: 1 1 auto; width: auto; min-width: 0; padding-right: 0; flex-wrap: wrap; justify-content: center; }
+  .programs__track .programs__list--copy { display: none; }
 }

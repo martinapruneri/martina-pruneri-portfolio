@@ -11,9 +11,13 @@
 
 <header class="site-header">
   <a class="brand active" href="#top">MARTINA PRUNERI</a>
-  <nav class="main-nav">
+  <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
+  <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
+    
     <a href="projects.html">PROJECTS</a>
     <a href="contacts.html">CONTACTS</a>
+    
+    <a href="blog.html">INTERNSHIP</a>
     <a href="assets/martina_pruneri_cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
   </nav>
 </header>
@@ -74,6 +78,8 @@
 
 <section class="programs">
   <h2 class="heading heading--white">Programs I Work With</h2>
+  <div class="programs__marquee">
+    <div class="programs__track">
   <ul class="programs__list">
     <li><div class="programs__icon programs__icon--figma"><img src="assets/figma.png" alt="Figma"></div><span>Figma</span></li>
     <li><div class="programs__icon programs__icon--wordpress"><img src="assets/wordpresslogo.svg" alt="WordPress"></div><span>WordPress</span></li>
@@ -83,6 +89,17 @@
     <li><div class="programs__icon programs__icon--illustrator"><img src="assets/illustrator.png" alt="Illustrator"></div><span>Illustrator</span></li>
     <li><div class="programs__icon programs__icon--capcut"><img src="assets/capcut.png" alt="CapCut"></div><span>CapCut</span></li>
   </ul>
+  <ul class="programs__list programs__list--copy" aria-hidden="true">
+    <li><div class="programs__icon programs__icon--figma"><img src="assets/figma.png" alt=""></div><span>Figma</span></li>
+    <li><div class="programs__icon programs__icon--wordpress"><img src="assets/wordpresslogo.svg" alt=""></div><span>WordPress</span></li>
+    <li><div class="programs__icon programs__icon--photoshop"><img src="assets/photoshop.png" alt=""></div><span>Photoshop</span></li>
+    <li><div class="programs__icon programs__icon--vscode"><img src="assets/vscode.png" alt=""></div><span>VS Code</span></li>
+    <li><div class="programs__icon programs__icon--canva"><img src="assets/canva.png" alt=""></div><span>Canva</span></li>
+    <li><div class="programs__icon programs__icon--illustrator"><img src="assets/illustrator.png" alt=""></div><span>Illustrator</span></li>
+    <li><div class="programs__icon programs__icon--capcut"><img src="assets/capcut.png" alt=""></div><span>CapCut</span></li>
+  </ul>
+    </div>
+  </div>
 </section>
 
 <div class="section-spacer"></div>
@@ -117,5 +134,6 @@
 </footer>
 
 <script src="portfolio.js"></script>
+<script src="header.js" defer></script>
 </body>
 </html>

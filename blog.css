@@ -1,0 +1,77 @@
+@font-face {
+  font-family: 'Malevice Inkbleed Medium';
+  src: url("assets/malevice-inkbleed (1)/MaleviceInkbleed-Medium.ttf") format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  --font-display: 'Malevice Inkbleed Medium', sans-serif;
+}
+
+/* Shared header and footer inherit their layout and type from homepage.css. */
+.brand { color: var(--pale-bg); }
+.main-nav a.active {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* Internship journal */
+a:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+.blog-page { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.blog-intro { background: linear-gradient(var(--pale-bg), #fff 650px); padding: 183px 10px 40px; min-width: 0; }
+.blog-intro__text { position: sticky; top: 269px; font-family: var(--font-display); }
+.blog-intro__company, .blog-intro__dates { font-size: clamp(24px, 2.4vw, 36px); line-height: 1.3; }
+.blog-intro h1 { font-family: var(--font-accent); font-size: clamp(36px, 5.4vw, 82px); font-weight: 400; text-transform: uppercase; color: var(--red); line-height: 1.15; white-space: nowrap; margin: 8px 0; letter-spacing: -0.025em; }
+.blog-weeks { padding: 39px 20px 38px 10px; display: grid; gap: 6px; }
+.week-card { --week-color: var(--red); position: relative; background: #fce9ed; border-radius: 17px; padding: 22px 80px 24px 20px; min-height: 183px; }
+.week-card:nth-child(4n + 2) { --week-color: var(--blue); background: #eaf6fa; }
+.week-card:nth-child(4n + 3) { --week-color: var(--lime); background: #f8faec; }
+.week-card:nth-child(4n + 4) { --week-color: var(--orange); background: #fff2e9; }
+.week-card__tags { font-family: var(--font-display); font-size: 20px; line-height: 1.4; }
+.week-card h2 { font-family: 'Malevice Inkbleed', sans-serif; color: var(--week-color); font-size: clamp(32px, 3.2vw, 48px); font-weight: 400; text-transform: uppercase; line-height: 1.2; margin: 5px 0; }
+.week-card__description { font-size: 20px; font-weight: 500; line-height: 1.2; letter-spacing: -0.025em; }
+.week-card__arrow { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; color: var(--week-color); }
+@media (max-width: 1100px) and (min-width: 781px) {
+  .week-card { padding-right: 60px; }
+  .week-card__description { font-size: 17px; }
+  .blog-intro__dates { font-size: 26px; }
+}
+@media (max-width: 780px) {
+  .blog-page { grid-template-columns: 1fr; }
+  .blog-intro { padding: 54px 20px 40px; }
+  .blog-intro__text { position: static; }
+  .blog-intro h1 { font-size: clamp(32px, 8.9vw, 68px); }
+  .blog-intro__company, .blog-intro__dates { font-size: clamp(22px, 4.4vw, 32px); }
+  .blog-weeks { padding: 0 16px 32px; gap: 8px; }
+  .week-card { min-height: 172px; padding: 20px 64px 22px 18px; }
+  .week-card__tags { font-size: 17px; }
+  .week-card h2 { font-size: clamp(30px, 6vw, 44px); }
+  .week-card__description { font-size: 17px; line-height: 1.35; }
+  .week-card__arrow { width: 36px; height: 36px; right: 14px; }
+}
+
+.blog-intro__dates { font-size: clamp(20px, 1.8vw, 28px); }
+
+@media (max-width: 780px) {
+  .blog-intro__dates { font-size: clamp(18px, 3.6vw, 24px); }
+}
+
+.week-card__link { position: absolute; inset: 0; border-radius: inherit; font-size: 0; }
+.week-card:has(.week-card__link):hover { filter: brightness(0.98); }
+.week-page { max-width: 1200px; margin: auto; padding: 48px 24px 80px; min-height: 65vh; }
+.week-back { display: inline-block; font-family: var(--font-display); margin-bottom: 32px; color: var(--red); }
+.week-page h1 { font-family: 'Malevice Inkbleed', sans-serif; font-size: clamp(36px, 5vw, 64px); color: var(--red); margin-bottom: 20px; }
+.week-entry__date { margin-bottom: 16px; color: #555; }
+.week-entry__summary { font-size: 22px; margin-bottom: 32px; }
+.week-entry__logs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.week-entry__logs section { border-radius: 17px; background: #eaf6fa; padding: 24px; }
+.week-entry__logs section:first-child { grid-row: span 4; background: #fce9ed; }
+.week-entry__logs h2 { font-family: var(--font-display); font-weight: 400; font-size: 26px; margin-bottom: 16px; }
+.week-entry__logs p { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 18px; line-height: 1.6; }
+@media (max-width: 780px) {
+  .week-entry__logs { grid-template-columns: 1fr; }
+  .week-entry__logs section:first-child { grid-row: auto; }
+}
